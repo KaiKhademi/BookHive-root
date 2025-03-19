@@ -8,6 +8,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 0;
     
 }
 
@@ -21,6 +22,8 @@ nav {
     height: 20;
     background-color: #fff;
     color: #000;
+    border: #000 solid;
+    border-radius: 8px;
 }
 
 .navbar .nav-links {
@@ -40,6 +43,8 @@ nav {
     height:100px
 }
 
+
+
 .dashboard {
     display: flex;
     flex-direction: column;
@@ -49,9 +54,59 @@ nav {
     color: #000;
     border: #000 solid;
     border-radius: 8px;
-    margin:50px;
+    margin:auto;
+    width: 95%;
+    height: 95%;
+}
+
+/* temporarily */
+.dashboard * {
+    margin: 10px;
+    padding: 30px;
+    border:#000 solid;
+    border-radius: 8px;
+}
+
+.dashboard .bio {
+    display: flex;
+    flex-direction: row;
     width: 100%;
-    height: 100%;
+}
+
+.dashboard .bio .profile-image, .dashboard .bio .profile-bio {
+    flex:1;
+}
+
+.dashboard .book {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard .book .achievments {
+    display: flex;
+    flex-direction: column; /* Makes it a vertical list */
+    gap: 10px; /* Adds space between items */
+    width: 300px;
+}
+
+.dashboard .book .achievments {
+    display:flex;
+    flex-direction: column;
+}
+
+#icon {
+    max-width: 100px;
+    max-width: 100px;
+}
+
+.dashboard .book .shelf {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard .book .shelf .otherbooks {
+    display: flex;
+    flex-direction: row;
 }
 
 .navbar .nav-links li{
