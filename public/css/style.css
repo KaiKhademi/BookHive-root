@@ -1,4 +1,3 @@
-/* Minimalist Black & White Sign-In Page Styles */
 
 body {
     font-family: Arial, sans-serif;
@@ -12,18 +11,31 @@ body {
     
 }
 
-.logo {
-    max-width: 100px;
-    max-height: 100px;
+.topbar {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:100px
 }
 
 nav {
-    width: 100%;
-    height: 20;
+    width: 95%;
+    height: 50px;
     background-color: #fff;
     color: #000;
     border: #000 solid;
     border-radius: 8px;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar .nav-links {
@@ -33,117 +45,23 @@ nav {
     align-items: center;
 }
 
-.topbar {
-    background-color: #000;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height:100px
+.nav-links li{
+    margin-left: 30%;
+    margin-right: 30%;
 }
+
+
 
 .search-box {
-    margin-right: 20px;
-    border: #000 solid;
-    border-radius: 8px;
-}
-
-
-.dashboard {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    color: #000;
-    border: #000 solid;
-    border-radius: 8px;
-    margin:auto;
-    width: 95%;
-    height: 95%;
-}
-
-.hive-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-    color: #000;
-    border: #000 solid;
-    border-radius: 8px;
-    margin:auto;
-    width: 95%;
-    height: 95%;
-}
-
-/* temporarily */
-.dashboard *, .hive-container * {
-    margin: 10px;
-    padding: 30px;
-    border:#000 solid;
-    border-radius: 8px;
-}
-
-.dashboard .bio {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-}
-
-.dashboard .bio .profile-image, .dashboard .bio .profile-bio {
-    flex:1;
-}
-
-.dashboard .book {
-    display: flex;
-    flex-direction: row;
-}
-
-.dashboard .book .achievments {
-    display: flex;
-    flex-direction: column; /* Makes it a vertical list */
-    gap: 10px; /* Adds space between items */
-    width: 300px;
-}
-
-.dashboard .book .achievments {
-    display:flex;
-    flex-direction: column;
-}
-
-.icon {
-    max-width: 100px;
-    max-width: 100px;
-}
-
-.dashboard .book .shelf {
-    display: flex;
-    flex-direction: column;
-}
-
-.dashboard .book .shelf .otherbooks {
-    display: flex;
-    flex-direction: row;
-}
-
-.navbar .nav-links li{
-    margin-left: 10%;
     margin-right: 10%;
-}
-
-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #000;
-    color: #fff;
+    margin-left: 30%;
+    border: #000 solid;
+    border-radius: 8px;
+    width: 150px;
 }
 
 .container {
-    width: 300px;
+    min-width: 300px;
     padding: 20px;
     border: 1px solid #000;
     border-radius: 8px;
@@ -179,6 +97,7 @@ button {
     width: 100%;
     padding: 10px;
     margin-top: 20px;
+    margin-bottom: 20px;
     border: none;
     background-color: #000;
     color: #fff;
@@ -198,4 +117,108 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #000;
+    border: #000 solid;
+    border-radius: 8px;
+    margin:auto;
+    width: 95%;
+    height: 95%;
+}
+
+.hive-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: #000;
+    border: #000 solid;
+    border-radius: 8px;
+    margin:auto;
+    width: 95%;
+    height: 95%;
+}
+
+.dashboard *, .hive-container * {
+    margin: 10px;
+    padding: 30px;
+}
+
+.dashboard .bio {
+    display: flex;
+    flex-direction: row;
+    width: 94%;
+    border:#000 solid;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+
+
+.dashboard .book {
+    display: flex;
+    flex-direction: row;
+    border:#000 solid;
+    border-radius: 8px;
+}
+
+.dashboard .book .achievments {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+    border:#000 solid;
+    border-radius: 8px;
+}
+
+.icon {
+    max-width: 100px;
+    max-height: 100px;
+    margin: 0;
+    padding: 0;
+}
+
+.item {
+    width: auto;
+    height: auto;
+    border:#000 solid;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 20px;
+}
+
+span {
+    width: 100%;
+}
+
+
+.dashboard .book .shelf {
+    display: flex;
+    flex-direction: column;
+    border:#000 solid;
+    border-radius: 8px;
+}
+
+.dashboard .book .shelf .otherbooks {
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard .book .shelf .otherbooks .borrowed {
+    border:#000 solid;
+    border-radius: 8px;
+}
+
+.dashboard .book .shelf .otherbooks .lended{
+    border:#000 solid;
+    border-radius: 8px;
 }
