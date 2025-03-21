@@ -22,6 +22,18 @@ body {
     height:100px
 }
 
+.sign-in-bar {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height:100px;
+    margin: 50px;
+}
+
 nav {
     width: 95%;
     height: 50px;
@@ -61,7 +73,7 @@ nav {
 }
 
 .container {
-    min-width: 300px;
+    max-width: 400px;
     padding: 20px;
     border: 1px solid #000;
     border-radius: 8px;
@@ -95,6 +107,7 @@ input {
 
 button {
     width: 100%;
+    height: auto;
     padding: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
@@ -135,6 +148,7 @@ a:hover {
 }
 
 .hive-container {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -156,7 +170,7 @@ a:hover {
 .dashboard .bio {
     display: flex;
     flex-direction: row;
-    width: 94%;
+    width: 95%;
     border:#000 solid;
     border-radius: 8px;
     margin: 10px;
@@ -169,6 +183,7 @@ a:hover {
     flex-direction: row;
     border:#000 solid;
     border-radius: 8px;
+    width: 95%;
 }
 
 .dashboard .book .achievments {
@@ -188,6 +203,7 @@ a:hover {
 }
 
 .item {
+    position: relative;
     width: auto;
     height: auto;
     border:#000 solid;
@@ -221,4 +237,13 @@ span {
 .dashboard .book .shelf .otherbooks .lended{
     border:#000 solid;
     border-radius: 8px;
+}
+
+.caption {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    font-size: 20px;
+    background: none;
+    padding: 5px;
 }
