@@ -247,3 +247,13 @@ span {
     background: none;
     padding: 5px;
 }
+
+.error {
+    border-color: red;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    display: none;
+}
