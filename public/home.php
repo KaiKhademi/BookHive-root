@@ -1,3 +1,15 @@
+<?php
+session_start(); // Start the session on the protected page
+
+// Check if the user is logged in
+if (!isset($_SESSION['id'])) {
+    // If the user is not logged in, redirect to the login page
+    header('Location: index.html');
+    exit();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,18 +39,18 @@
       <div class="dashboard">
         <div class="bio">
           <img class="profile-image icon" src="images/BookHive-Logo.png"/>
-          <h2 class="profile-bio">Profile Biography</h2>
+          <h2 class="profile-bio">Welcome, <?php echo $_SESSION["username"];?>!</h2>
+            <div>
+                <p>Username: <?php echo $_SESSION["username"];?></p>
+                <p>Email: <?php echo $_SESSION["email"];?></p>
+            </div>
         </div>
         <div class="book">
             <div class="achievments">
                 <h2>Achievments</h2>
                 <div class="item">
                   <img src="images/achievment-logo.png" alt="achivement" class="icon">
-                    <span class="caption">Item 2</span>
-                </div>
-                <div class="item">
-                  <img src="images/achievment-logo.png" alt="achivement" class="icon">
-                  <span class="caption">Item 2</span>
+                    <span class="caption">Logging in!</span>
                 </div>
             </div>
             <div class="shelf">

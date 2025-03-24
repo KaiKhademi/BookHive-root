@@ -1,5 +1,8 @@
 <?php
 // Include the database connection
+
+session_start();
+
 global $pdo;
 include('connect.php'); // Make sure 'connect.php' contains the correct PDO connection
 
@@ -19,6 +22,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if the user exists and verify the password using password_verify
     if ($user && password_verify($password, $user['password'])) {
         echo "Success"; // Successful login
+        $_SESSION['id'] = $user['id']; // Store user ID in session
+        $_SESSION['email'] = $user['email']; // Optionally, store email in session
+        $_SESSION['username'] = $user['username'];
+        header('Location: ../public/home.php');
     } else {
         echo "Error"; // Invalid email or password
     }
