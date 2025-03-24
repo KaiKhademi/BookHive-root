@@ -229,6 +229,12 @@ a:hover {
     margin: 20px;
 }
 
+.item *{
+    position: relative;
+    width: 80%;
+    height: auto;
+}
+
 span {
     width: 100%;
 }
