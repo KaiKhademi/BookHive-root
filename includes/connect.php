@@ -1,13 +1,10 @@
 <?php
-// Database connection variables
-$host = '127.0.0.1'; // localhost
-$dbname = 'bookhive_db'; // your database name
-$username = 'root'; // default MySQL username for XAMPP
-$password = ''; // default MySQL password for XAMPP (empty by default)
+
+include('config.php');
 
 try {
     // Create PDO connection
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $pdo = new PDO(DBCONNSTRING, DBUSER, DBPASS);
     // Set PDO error mode to exception
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {

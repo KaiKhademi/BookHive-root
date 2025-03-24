@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($stmt->execute()) {
             echo "User registered successfully!";
             // Optionally, redirect to the login page after registration
-            header('Location: signin.html');
+            header('Location: ../public/index.html');
             exit();
         } else {
             echo "Error: Something went wrong!";
