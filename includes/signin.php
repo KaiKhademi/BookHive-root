@@ -1,33 +1,22 @@
 <?php
-// Include the database connection
-
 session_start();
+require_once('connect.php');
 
-global $pdo;
-include('connect.php'); // Make sure 'connect.php' contains the correct PDO connection
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-// Check if the form was submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    // Prepare and execute the query to find the user by email
-    $stmt = $pdo->prepare("SELECT * FROM Users WHERE email = :email");
-    $stmt->bindParam(':email', $email, PDO::PARAM_STR); // Bind the email parameter securely
-    $stmt->execute();
-
-    // Fetch the user data
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+    $stmt->execute([':email' => $email]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Check if the user exists and verify the password using password_verify
     if ($user && password_verify($password, $user['password'])) {
-        echo "Success"; // Successful login
-        $_SESSION['id'] = $user['id']; // Store user ID in session
-        $_SESSION['email'] = $user['email']; // Optionally, store email in session
-        $_SESSION['username'] = $user['username'];
-        header('Location: ../public/home.php');
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['email'] = $user['email'];
+        header("Location: ../public/threads.php");
+        exit();
     } else {
-        echo "Error"; // Invalid email or password
+        echo "Invalid email or password.";
     }
 }
 ?>
