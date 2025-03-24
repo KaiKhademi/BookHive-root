@@ -7,6 +7,15 @@ if (!isset($_SESSION['id'])) {
     header('Location: index.html');
     exit();
 }
+global $pdo;
+include("../includes/connect.php");
+$username = $_SESSION['username'];
+$stmt = $pdo->prepare("SELECT * FROM Books WHERE owner_username = :username");
+$stmt->bindParam(':username', $username);
+$stmt->execute();
+$books = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
 ?>
 
 
@@ -26,7 +35,7 @@ if (!isset($_SESSION['id'])) {
     </header>
     <nav class="navbar">
         <ul class="nav-links">
-          <li><a href="home.html">Home</a></li>
+          <li><a href="home.php">Home</a></li>
           <li><a href="hive.html">Hive</a></li>
           <li><a href="about.html">About</a></li>
         <li class="search">
@@ -54,20 +63,34 @@ if (!isset($_SESSION['id'])) {
                 </div>
             </div>
             <div class="shelf">
-                <div class="mybooks">
+                <div class="mybooks" id="mybooks">
                     <h2>My Bookshelf</h2>
-                    <div class="item">
-                      <img src="images/book-logo.png" alt="book" class="icon">
-                        <span class="caption">Book 1</span>
-                    </div>
-                    <div class="item">
-                      <img src="images/book-logo.png" alt="book" class="icon">
-                        <span class="caption">Book 2</span>
-                    </div>
-                    <div class="item">
-                      <img src="images/book-logo.png" alt="book" class="icon">
-                        <span class="caption">Book 3</span>
-                    </div>
+                            <?php
+                        foreach ($books as $book) {
+                              $book_name = $book["book_name"];
+                              echo '<div class="item">
+                                      <img src="images/book-logo.png" alt="book" class="icon">
+                                      <span class="caption">' . $book_name . '</span>
+                                    </div>';
+                          }
+                      ?>
+                    <form action="../includes/add_book.php" method="POST" class="item" id="add-book-form">
+                        <h3>Add a Book!</h3>
+                        <label for="book_name">Name</label>
+                        <input type="text" id="book_name" name="book_name">
+                        <span id="name-error" class="error-message"></span>
+
+                        <label for="genre">Genre</label>
+                        <select id="genre" name="genre">
+                            <option value="classic">Classic</option>
+                            <option value="fiction">Fiction</option>
+                            <option value="scifi">Sci-Fi</option>
+                            <option value="nonfiction">Non-fiction</option>
+                            <option value="fantasy">Fantasy</option>
+                        </select>
+
+                        <button type="submit">Add</button>
+                    </form>
                 </div>
                 <div class="otherbooks">
                   <div class="borrowed">
@@ -106,5 +129,7 @@ if (!isset($_SESSION['id'])) {
         </div>
 
       </div>
+    <script src="js/homeScript.js"></script>
+
 </body>
 </html>

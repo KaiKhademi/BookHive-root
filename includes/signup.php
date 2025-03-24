@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $dob = $_POST['dob']; // Date of Birth
 
     // Check if the email or username already exists in the database
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email OR username = :username");
+    $stmt = $pdo->prepare("SELECT * FROM Users WHERE email = :email OR username = :username");
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
     $stmt->bindParam(':username', $username, PDO::PARAM_STR);
     $stmt->execute();
