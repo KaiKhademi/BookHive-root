@@ -1,0 +1,15 @@
+# BookHive - March 23 Progress Summary
+
+## ✅ Completed
+
+- Login/Signup pages with HTML forms and client-side validation
+- Server-side PHP logic for authentication
+- Database connection configured (PDO with server-ready config.php)
+- GitHub repo linked and ready for deployment to cosc360.ok.ubc.ca
+- Files organized for public_html deployment
+- VPN to UBC server down right now, but connects
+
+## ⚠️ In Progress
+
+- Discussion thread feature (planned)
+- Asynchronous updates (planned)
