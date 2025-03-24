@@ -1,3 +1,37 @@
+# BookHive – Page Examples & Types
+
+This document outlines the different types of pages developed as part of the BookHive web application.
+
+---
+
+##  Authentication Pages
+
+| Page         | Description                    |
+|--------------|--------------------------------|
+| `index.html` | Login page with form validation |
+| `signup.html` | User registration with DOB     |
+
+---
+
+## Discussion Pages
+
+| Page         | Description                            |
+|--------------|----------------------------------------|
+| `threads.php` | Create and view discussion threads     |
+
+---
+
+## 🏠 Main App Pages
+
+| Page         | Description                          |
+|--------------|--------------------------------------|
+| `home.php`   | Main landing/dashboard page          |
+| `hive.html`  | Hive-based content or book overview  |
+| `about.html` | Project purpose and team info        |
+
+---
+
+
 # BookHive - March 23 Progress Summary
 
 ## ✅ Completed
@@ -8,8 +42,9 @@
 - GitHub repo linked and ready for deployment to cosc360.ok.ubc.ca
 - Files organized for public_html deployment
 - VPN to UBC server down right now, but connects
+- Discussion thread feature 
+- Asynchronous updates 
 
-## ⚠️ In Progress
 
-- Discussion thread feature (planned)
-- Asynchronous updates (planned)
+
+
