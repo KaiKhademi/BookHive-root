@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,12 +33,16 @@
 <body>
     <h1>Discussion Threads</h1>
 
-    <form id="thread-form" onsubmit="submitThread(event)">
-        <input type="hidden" name="user_id" value="1"> <!-- Hardcoded for now -->
-        <label>Title: <input type="text" name="title" required></label><br>
-        <label>Content:<br><textarea name="content" required></textarea></label><br>
-        <button type="submit">Post Thread</button>
-    </form>
+    <?php if (!isset($_SESSION['user_id'])): ?>
+        <p><a href="index.html">Please sign in to post a thread.</a></p>
+    <?php else: ?>
+        <form id="thread-form" onsubmit="submitThread(event)">
+            <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
+            <label>Title: <input type="text" name="title" required></label><br>
+            <label>Content:<br><textarea name="content" required></textarea></label><br>
+            <button type="submit">Post Thread</button>
+        </form>
+    <?php endif; ?>
 
     <h2>All Threads:</h2>
     <div id="threads"></div>
