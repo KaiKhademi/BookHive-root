@@ -15,20 +15,21 @@
     <div class="container">
         <form action="../includes/signup.php" method="POST" class="signup-form" id="signup-form">
             <h2>Sign Up</h2>
+
             <label for="username">Username</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" required minlength="3">
             <span id="username-error" class="error-message"></span>
 
             <label for="email">Email</label>
-            <input type="text" id="email" name="email">
+            <input type="email" id="email" name="email" required>
             <span id="email-error" class="error-message"></span>
             
             <label for="password">Password</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" required minlength="6">
             <span id="password-error" class="error-message"></span>
 
             <label for="dob">Date of Birth</label>
-            <input type="date" id="dob" name="dob">
+            <input type="date" id="dob" name="dob" required>
             <span id="dob-error" class="error-message"></span>
             
             <button type="submit">Sign Up</button>
