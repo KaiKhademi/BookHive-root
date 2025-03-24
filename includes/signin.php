@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Fetch the user data
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Check if user exists and password matches
-    if ($password === $user['password']) {
+    // Check if the user exists and verify the password using password_verify
+    if ($user && password_verify($password, $user['password'])) {
         echo "Success"; // Successful login
     } else {
         echo "Error"; // Invalid email or password

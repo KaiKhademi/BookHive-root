@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     form.addEventListener("submit", function (event) {
-        event.preventDefault();
         if(validateEmail(email.value) === false || email.value.length === 0) {
+            event.preventDefault();
             email.classList.add("error");
             emailError.textContent = "Please enter a valid email";
             emailError.style.display = "flex";
@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
             emailError.style.display = "none";
         }
         if(password.value.length === 0){
+            event.preventDefault();
             password.classList.add("error");
             passwordError.textContent = "Please enter a password";
             passwordError.style.display = "flex";
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
             passwordError.style.display = "none";
         }
         if(username.value.length === 0){
+            event.preventDefault();
             username.classList.add("error");
             usernameError.textContent = "Please enter a username";
             usernameError.style.display = "flex";
@@ -45,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
             usernameError.style.display = "none";
         }
         if(dob.value === null){
+            event.preventDefault();
             dob.classList.add("error");
             dobError.textContent = "Please enter your date of birth";
             dobError.style.display = "flex";
@@ -55,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
             dobError.style.display = "none";
         }
         if(isValidDOB(dob.value) === false ){
+            event.preventDefault();
             dob.classList.add("error");
             dobError.textContent = "Please enter a valid date of birth";
             dobError.style.display = "flex";
