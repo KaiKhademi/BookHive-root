@@ -1,4 +1,5 @@
 <?php
+global $pdo;
 session_start();
 require_once('connect.php');
 
@@ -13,7 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($user && password_verify($password, $user['password'])) {
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
-        header("Location: ../public/threads.php");
+        $_SESSION['username'] = $user['username'];
+        header("Location: ../public/home.php");
         exit();
     } else {
         echo "Invalid email or password.";

@@ -2,7 +2,7 @@
 session_start(); // Start the session on the protected page
 
 // Check if the user is logged in
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['user_id'])) {
     // If the user is not logged in, redirect to the login page
     header('Location: index.html');
     exit();
@@ -35,15 +35,14 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </header>
     <nav class="navbar">
         <ul class="nav-links">
-          <li><a href="home.php">Home</a></li>
-          <li><a href="hive.html">Hive</a></li>
-          <li><a href="about.html">About</a></li>
-        <li class="search">
-            <input type="text" placeholder="Search..." class="search-box">
+            <li><a href="home.php">Home</a></li>
+            <li><a href="hive.html">Hive</a></li>
+            <li><a href="threads.php">Threads</a></li>
+            <li><a href="about.html">About</a></li>
+            <input type="text" class="search-box" placeholder="Search...">
             <button class="search-button">Search</button>
-        </li>
         </ul>
-      </nav>
+    </nav>
         <br>
       <div class="dashboard">
         <div class="bio">
@@ -88,6 +87,9 @@ $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <option value="nonfiction">Non-fiction</option>
                             <option value="fantasy">Fantasy</option>
                         </select>
+
+                        <input type="file" id="imageInput" accept="image/*">
+                        <img id="preview" src="#" alt="Image Preview" style="display: none; width: 200px; margin-top: 10px;">
 
                         <button type="submit">Add</button>
                     </form>

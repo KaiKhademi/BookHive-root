@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0;
-    
+
 }
 
 .topbar {
@@ -59,7 +59,7 @@ nav {
 
 .nav-links li{
     margin-left: 30%;
-    margin-right: 30%;
+    margin-right: 15%;
 }
 
 .search {
