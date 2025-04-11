@@ -24,7 +24,7 @@ Each test uses **PHPUnit** to validate functionality and ensure reliability of d
 
 ---
 
-## 🧪 Optional / Bonus Tests
+## 🧪 Other Tests
 
 ### `ProfileTest.php`
 - Tests updating a user's email address
@@ -47,14 +47,5 @@ To run all tests:
 phpunit
 ```
 
-Make sure you have:
-- A valid database connection (via `connect.php`)
-- PHPUnit installed (`composer require --dev phpunit/phpunit`)
-- Tables created via SQL scripts (`create_users.sql`, `create_threads.sql`, etc.)
 
----
-
-## 📌 Note
-These tests use transactions and rollback to prevent polluting your database.
-Ensure you are connected to a **test database** when running.
 
