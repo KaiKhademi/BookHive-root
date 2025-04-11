@@ -5,17 +5,26 @@ require_once __DIR__ . '/../BookHive-root-main/includes/connect.php';
 
 class SignupTest extends TestCase
 {
-    public function testUserRegistration()
+    protected $pdo;
+    protected $testEmail = 'phpunittest_user@example.com';
+
+    protected function setUp(): void
     {
         global $pdo;
-        $email = 'testuser1@example.com';
-        $username = 'testuser1';
-        $password = password_hash('password123', PASSWORD_DEFAULT);
-        $dob = '1999-01-01';
+        $this->pdo = $pdo;
+    }
 
-        $stmt = $pdo->prepare("INSERT INTO users (username, email, password, dob) VALUES (?, ?, ?, ?)");
-        $result = $stmt->execute([$username, $email, $password, $dob]);
-
+    public function testUserRegistration()
+    {
+        $stmt = $this->pdo->prepare("INSERT INTO users (username, email, password, dob) VALUES (?, ?, ?, ?)");
+        $password = password_hash('testpass123', PASSWORD_DEFAULT);
+        $result = $stmt->execute(['phpunit_user', $this->testEmail, $password, '2000-01-01']);
         $this->assertTrue($result);
+    }
+
+    protected function tearDown(): void
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM users WHERE email = ?");
+        $stmt->execute([$this->testEmail]);
     }
 }
