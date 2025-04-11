@@ -15,31 +15,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Get form data
     $username = $_SESSION['username'];
     $book = $_POST['book_name'];
-    $genre = $_POST['genre'];
+    $content = $_POST['message'];
+    $userTime = $_POST['user_time'];
 
-    // Check if the email or username already exists in the database
-    $stmt = $pdo->prepare("SELECT * FROM Books WHERE owner_username = :username AND book_name = :book AND genre = :genre");
-    $stmt->bindParam(':username', $username);
-    $stmt->bindParam(':book', $book);
-    $stmt->bindParam(':genre', $genre);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    // If the email or username already exists, display an error message
-    if ($user) {
-        echo "Error: You have already added this book.";
-    } else {try {
+    try {
         // Insert the new user into the database
-        $stmt = $pdo->prepare("INSERT INTO Books (book_name, genre, owner_username) VALUES (:book, :genre, :username)");
+        $stmt = $pdo->prepare("INSERT INTO Threads (username, book, content, date) VALUES (:username, :book, :content, :date)");
         $stmt->bindParam(':username', $username);
         $stmt->bindParam(':book', $book);
-        $stmt->bindParam(':genre', $genre);
+        $stmt->bindParam(':content', $content);
+        $stmt->bindParam(':date', $userTime);
 
         // Execute the query
         if ($stmt->execute()) {
-            echo "Book added successfully!";
+            echo "Thread added successfully!";
 
-            header('Location: ../public/home.php');
+            header('Location: ../public/threads.php');
             exit();
         } else {
             echo "Error: Something went wrong!";
@@ -47,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
     }
-    }
+
 }
 ?>
 
