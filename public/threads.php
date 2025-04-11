@@ -1,50 +1,32 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Discussion Threads</title>
-    <script>
-        function loadThreads() {
-            fetch('../includes/view_threads.php')
-                .then(res => res.text())
-                .then(html => {
-                    document.getElementById('threads').innerHTML = html;
-                });
-        }
-
-        function submitThread(e) {
-            e.preventDefault();
-            const formData = new FormData(document.getElementById('thread-form'));
-
-            fetch('../includes/create_thread.php', {
-                method: 'POST',
-                body: formData
-            }).then(res => res.text())
-              .then(msg => {
-                  alert(msg);
-                  loadThreads();
-                  document.getElementById('thread-form').reset();
-              });
-        }
-
-        window.onload = loadThreads;
-    </script>
+    <meta charset="UTF-8">
+    <title>BookHive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookHive</title>
+    <link rel="stylesheet" href="css/starter.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Discussion Threads</h1>
+<header class="topbar">
+    <img class ="icon" src="images/BookHive-Logo.png"/>
+    <h1>BookHive</h1>
+</header>
+<nav class="navbar">
+    <ul class="nav-links">
+        <li><a href="home.php">Home</a></li>
+        <li><a href="hive.html">Hive</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="threads.php">Threads</a></li>
+        <input type="text" class="search-box" placeholder="Search...">
+        <button>Search</button>
+    </ul>
+</nav>
+<br>
+<div>
 
-    <?php if (!isset($_SESSION['user_id'])): ?>
-        <p><a href="index.html">Please sign in to post a thread.</a></p>
-    <?php else: ?>
-        <form id="thread-form" onsubmit="submitThread(event)">
-            <input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id']; ?>">
-            <label>Title: <input type="text" name="title" required></label><br>
-            <label>Content:<br><textarea name="content" required></textarea></label><br>
-            <button type="submit">Post Thread</button>
-        </form>
-    <?php endif; ?>
+</div>
 
-    <h2>All Threads:</h2>
-    <div id="threads"></div>
 </body>
 </html>
